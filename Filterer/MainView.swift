@@ -16,9 +16,6 @@ class MainView : UIView
     //----------------------------------------------------
     @IBOutlet var filtersMenu: FilterMenuView!
     @IBOutlet var editMenu: EditMenuView!
-    
-    
-    
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var imageToggle: UIButton!
     @IBOutlet var bottomMenu: UIView!
@@ -29,8 +26,8 @@ class MainView : UIView
     
     func setup()
     {
-        setupRoundedLabel(originalLabel)
-        setupRoundedLabel(processingLabel)
+        _ = setupRoundedLabel(originalLabel)
+        _ = setupRoundedLabel(processingLabel)
     }
     
     func setupRoundedLabel(_ label: UILabel) -> UILabel

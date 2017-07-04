@@ -175,38 +175,38 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="n3M-NR-6VP">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="96"/>
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="60"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Drk-Kp-614">
-                                    <rect key="frame" x="0.0" y="0.0" width="48" height="96"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="48" height="60"/>
                                     <state key="normal" title="F1" backgroundImage="F1"/>
                                     <connections>
                                         <action selector="didTouchFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vpv-XO-TAs"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axt-GK-a6m">
-                                    <rect key="frame" x="48" y="0.0" width="48" height="96"/>
+                                    <rect key="frame" x="48" y="0.0" width="48" height="60"/>
                                     <state key="normal" title="F2" backgroundImage="F2"/>
                                     <connections>
                                         <action selector="didTouchFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KQ2-aU-VOC"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNq-be-bSy">
-                                    <rect key="frame" x="96" y="0.0" width="48" height="96"/>
+                                    <rect key="frame" x="96" y="0.0" width="48" height="60"/>
                                     <state key="normal" title="F3" backgroundImage="F3"/>
                                     <connections>
                                         <action selector="didTouchFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Y7t-eR-KKt"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUq-ef-bpc">
-                                    <rect key="frame" x="144" y="0.0" width="48" height="96"/>
+                                    <rect key="frame" x="144" y="0.0" width="48" height="60"/>
                                     <state key="normal" title="F4" backgroundImage="F4"/>
                                     <connections>
                                         <action selector="didTouchFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PGY-LU-Ue6"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7P8-VM-YCw">
-                                    <rect key="frame" x="192" y="0.0" width="48" height="96"/>
+                                    <rect key="frame" x="192" y="0.0" width="48" height="60"/>
                                     <state key="normal" title="F5" backgroundImage="F5"/>
                                     <connections>
                                         <action selector="didTouchFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2DX-ED-uxl"/>
@@ -214,7 +214,7 @@
                                 </button>
                             </subviews>
                             <constraints>
-                                <constraint firstAttribute="height" constant="96" id="sqT-eC-YM0"/>
+                                <constraint firstAttribute="height" constant="60" id="sqT-eC-YM0"/>
                             </constraints>
                         </stackView>
                     </subviews>

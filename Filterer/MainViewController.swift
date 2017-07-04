@@ -102,7 +102,6 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         sender.isSelected = !sender.isSelected
     }
     
-    
     @IBAction func didTouchFilter(_ sender: UIButton)
     {
         let selected = sender.currentTitle!
@@ -130,7 +129,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             currentFilter = "brightness"
             applyFilter(currentFilter, level:50)
         default:
-            print("Why is the button \(sender.currentTitle) bounded to this action?")
+            print("Why is the button \(sender.currentTitle ?? "NDA") bounded to this action?")
         }
         
         currentView.originalLabel.isHidden = true
@@ -157,7 +156,6 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     {
         applyFilter(currentFilter, level: Int(sender.value))
     }
-    
     
     //----------------------------------------------------
     // MARK: - Functions
@@ -279,7 +277,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // NOTE: Using the "first" because there is only one. :)
         let state = currentView.imageView.gestureRecognizers?.first?.state
         
-        switchBetweenOriginalAndProcessed(state == UIGestureRecognizerState.began || state == UIGestureRecognizerState.changed)
+        _ = switchBetweenOriginalAndProcessed(state == UIGestureRecognizerState.began || state == UIGestureRecognizerState.changed)
         
     }
     
@@ -298,12 +296,8 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         return condition
     }
-    
-    
-    
+
     //----------------------------------------------------
-    
-    
 }
 
 
