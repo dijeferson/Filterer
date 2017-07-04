@@ -8,15 +8,15 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate 
+class MainViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
     //MARK: - Private Properties
-    fileprivate let processor = ImageProcessing()
-    fileprivate let originalImage = UIImage(named: "sample")!
-    fileprivate var processedImage : UIImage? = nil
+    private let processor = ImageProcessing()
+    private let originalImage = UIImage(named: "sample")!
+    private var processedImage : UIImage? = nil
     
     //MARK: - Public Properties
-    fileprivate var currentView: MainView
+    private var currentView: MainView
     {
         return self.view as! MainView
     }
@@ -27,7 +27,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        currentView.imageToggle.setTitle("Show Original Image", for: .selected)
+        //currentView.imageToggle.setTitle("Show Original Image", for: .selected)
         
         currentView.imageView.image = originalImage
         processedImage = originalImage

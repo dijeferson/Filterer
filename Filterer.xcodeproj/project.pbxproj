@@ -115,6 +115,7 @@
 				077B1AB41CC07EE20036BA30 /* Sources */,
 				077B1AB51CC07EE20036BA30 /* Frameworks */,
 				077B1AB61CC07EE20036BA30 /* Resources */,
+				SWIFCLEANCUSTOMRUNSCRIPT /* Swift-Clean Run Script */,
 			);
 			buildRules = (
 			);
@@ -132,7 +133,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Jeferson Santos";
 				TargetAttributes = {
 					077B1AB71CC07EE20036BA30 = {
@@ -172,6 +173,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		SWIFCLEANCUSTOMRUNSCRIPT /* Swift-Clean Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Swift-Clean Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "if [[ -z ${SKIP_SWIFTCLEAN} || ${SKIP_SWIFTCLEAN} != 1 ]]; then\nif [[ -d \"${LOCAL_APPS_DIR}/Swiftly-Clean.app\" ]]; then \n\"${LOCAL_APPS_DIR}\"/Swiftly-Clean.app/Contents/Resources/SwiftClean.app/Contents/MacOS/SwiftClean \"${SRCROOT}\"?@autoFix \nelse\necho \"warning: You have to install and set up Swiftly-Clean to use its features!\" \nfi\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		077B1AB41CC07EE20036BA30 /* Sources */ = {
@@ -222,8 +240,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -267,8 +287,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -287,6 +309,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

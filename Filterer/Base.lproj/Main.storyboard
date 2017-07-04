@@ -57,6 +57,9 @@
                                                 <exclude reference="NS8-8C-te6"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="didTouchUpInsideImageToggle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S6j-Fy-47f"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REX-EV-F6a">
                                         <rect key="frame" x="281.5" y="0.0" width="93.5" height="44"/>
@@ -121,6 +124,8 @@
                             <constraint firstItem="bUT-1N-cf9" firstAttribute="top" secondItem="Jbm-Q8-W4t" secondAttribute="bottom" id="u5p-UO-eyd"/>
                         </constraints>
                         <connections>
+                            <outlet property="filterButton" destination="pUZ-6N-K74" id="3us-uY-hW8"/>
+                            <outlet property="imageToggle" destination="ONl-24-68o" id="u6A-Ss-OxL"/>
                             <outlet property="imageView" destination="Jbm-Q8-W4t" id="Da3-uw-FrV"/>
                         </connections>
                     </view>
