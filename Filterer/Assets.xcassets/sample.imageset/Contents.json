@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "13165904-Two-women-happy-in-car-taking-handsome-hitch-hiker-road-trip-Stock-Photo-1.jpg",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "13165904-Two-women-happy-in-car-taking-handsome-hitch-hiker-road-trip-Stock-Photo.jpg",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "13165904-Two-women-happy-in-car-taking-handsome-hitch-hiker-road-trip-Stock-Photo-2.jpg",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
