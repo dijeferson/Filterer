@@ -11,12 +11,35 @@ import UIKit
 
 class MainView : UIView
 {
-    //MARK: - Outlets
+    //----------------------------------------------------
+    // MARK: - Outlets
+    //----------------------------------------------------
+    @IBOutlet var filtersMenu: FilterMenuView!
+    @IBOutlet var editMenu: EditMenuView!
+    
+    
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var imageToggle: UIButton!
-    @IBOutlet var filtersMenu: UIView!
     @IBOutlet var bottomMenu: UIView!
     @IBOutlet var filterButton: UIButton!
+    @IBOutlet var originalLabel: UILabel!
+    @IBOutlet var processingLabel: UILabel!
+    @IBOutlet var editButton: UIButton!
+    
+    func setup()
+    {
+        setupRoundedLabel(originalLabel)
+        setupRoundedLabel(processingLabel)
+    }
+    
+    func setupRoundedLabel(_ label: UILabel) -> UILabel
+    {
+        label.layer.cornerRadius = 10
+        label.layer.masksToBounds = true
+        label.clipsToBounds = true
+        
+        return label
+    }
     
 }

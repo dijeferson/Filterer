@@ -74,7 +74,7 @@ class ImageProcessing
     
     func process(_ image:UIImage, amount:Int, filter:String) -> UIImage
     {
-        let rgba = RGBAImage(image: image)!
+        var rgba = RGBAImage(image: image)!
         var index = 0
         
         for p in rgba.pixels
