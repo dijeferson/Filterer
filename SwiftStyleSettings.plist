@@ -1,4 +1,4 @@
- <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -74,8 +74,8 @@
 <false/>
 <key>kShouldStaticVariableNameStartWithCapitalLetter</key>
 <false/>
-<key>kNumberOfEmptyLinesAtEndOfFile</key>
-<integer>0</integer>
+<!-- <key>kNumberOfEmptyLinesAtEndOfFile</key>
+<integer>0</integer> -->
 <key>kRequireSpaceBeforeParameterParanthesesInOperatorFuncSignature</key>
 <false/>
 
@@ -152,7 +152,7 @@
 <false/>
 <key>kShouldStaticVariableNameStartWithCapitalLetter</key>
 <false/>
-<key>kNumberOfEmptyLinesAtEndOfFile</key>
-<integer>0</integer>
+<!-- <key>kNumberOfEmptyLinesAtEndOfFile</key>
+<integer>0</integer> -->
 <key>kRequireSpaceBeforeParameterParanthesesInOperatorFuncSignature</key>
 <false/>

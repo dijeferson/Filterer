@@ -13,28 +13,27 @@ class ImageProcessing {
     func makeBright(_ image: UIImage, amount: Int = 20) -> UIImage {
         return process(image, amount: amount, filter: "brightness")
     }
-    
+
     func makeWarm(_ image: UIImage, amount: Int = 15) -> UIImage {
         return process(image, amount: amount, filter: "warm")
     }
-    
+
     func makeCold(_ image: UIImage, amount: Int = 15) -> UIImage {
         return process(image, amount: amount, filter: "cold")
     }
-    
+
     func makePoster(_ image: UIImage, amount: Int = 10) -> UIImage {
         return process(image, amount: amount, filter: "poster")
     }
-    
+
     func makeColor(_ image: UIImage, amount: Int = 10) -> UIImage {
         return process(image, amount: amount, filter: "colorize")
     }
-    
+
     func batch(_ image: UIImage, filters: [String]) -> UIImage {
         var resultImage: UIImage = image
-        
+
         for filter in filters {
-            
             switch filter {
             case "doublebrightness":
                 resultImage = process(resultImage, amount: 128, filter: "brightness")
@@ -59,28 +58,28 @@ class ImageProcessing {
                 break
             }
         }
-        
+
         return resultImage
     }
-    
+
     func process(_ image: UIImage, amount: Int, filter: String) -> UIImage {
         var rgba = RGBAImage(image: image)!
         var index = 0
-        
+
         for p in rgba.pixels {
             rgba.pixels[index] = processPixel(filter, amount: amount, pixel: p)
             index += 1
         }
-        
+
         return rgba.toUIImage()!
     }
-    
+
     fileprivate func processPixel(_ filter: String, amount: Int, pixel: Pixel) -> Pixel {
         var affectedPixel: Pixel = pixel
         var red = Int(pixel.red)
         var blue = Int(pixel.blue)
         var green = Int(pixel.green)
-        
+
         switch filter {
         case "brightness":
             red += amount
@@ -106,26 +105,26 @@ class ImageProcessing {
             red += amount / 32
             blue += amount / 32
             green += amount / 32
-            
+
             if(red >= 0 && red < 64) { red = 32}
             if(red >= 64 && red < 128) { red = 96}
             if(red >= 128 && red < 256) { red = 192}
-            
+
             if(blue >= 0 && blue < 64) { blue = 32}
             if(blue >= 64 && blue < 128) { blue = 96}
             if(blue >= 128 && blue < 256) { blue = 192}
-            
+
             if(green >= 0 && green < 64) { green = 32}
             if(green >= 64 && green < 128) { green = 96}
             if(green >= 128 && green < 256) { green = 192}
         default:
             return affectedPixel
         }
-        
+
         affectedPixel.red = UInt8(max(0, min(255, red)))
         affectedPixel.blue = UInt8(max(0, min(255, blue)))
         affectedPixel.green = UInt8(max(0, min(255, green)))
-        
+
         return affectedPixel
     }
 }
