@@ -1,3 +1,6 @@
+/*
+ */
+
 import UIKit
 
 public struct Pixel {
@@ -53,7 +56,7 @@ public struct RGBAImage {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         
         var bitmapInfo: UInt32 = CGBitmapInfo.byteOrder32Big.rawValue
-        bitmapInfo |= CGImageAlphaInfo.premultipliedLast.rawValue & CGBitmapInfo.alphaInfoMask.rawValue
+        bitmapInfo = bitmapInfo | (CGImageAlphaInfo.premultipliedLast.rawValue & CGBitmapInfo.alphaInfoMask.rawValue)
         
         width = Int(image.size.width)
         height = Int(image.size.height)
@@ -74,7 +77,7 @@ public struct RGBAImage {
     public func toUIImage() -> UIImage? {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         var bitmapInfo: UInt32 = CGBitmapInfo.byteOrder32Big.rawValue
-        bitmapInfo |= CGImageAlphaInfo.premultipliedLast.rawValue & CGBitmapInfo.alphaInfoMask.rawValue
+        bitmapInfo = bitmapInfo | (CGImageAlphaInfo.premultipliedLast.rawValue & CGBitmapInfo.alphaInfoMask.rawValue)
         
         let bytesPerRow = width * 4
         

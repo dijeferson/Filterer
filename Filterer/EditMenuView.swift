@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-class EditMenuView : UIView
-{
+class EditMenuView: UIView {
     @IBOutlet var fxSlider: UISlider!
 }

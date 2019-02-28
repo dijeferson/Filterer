@@ -9,39 +9,31 @@
 import Foundation
 import UIKit
 
-class ImageProcessing
-{
-    func makeBright(_ image:UIImage, amount:Int = 20) -> UIImage
-    {
+class ImageProcessing {
+    func makeBright(_ image: UIImage, amount: Int = 20) -> UIImage {
         return process(image, amount: amount, filter: "brightness")
     }
     
-    func makeWarm(_ image:UIImage, amount:Int = 15) -> UIImage
-    {
+    func makeWarm(_ image: UIImage, amount: Int = 15) -> UIImage {
         return process(image, amount: amount, filter: "warm")
     }
     
-    func makeCold(_ image:UIImage, amount:Int = 15) -> UIImage
-    {
+    func makeCold(_ image: UIImage, amount: Int = 15) -> UIImage {
         return process(image, amount: amount, filter: "cold")
     }
     
-    func makePoster(_ image:UIImage, amount:Int = 10) -> UIImage
-    {
+    func makePoster(_ image: UIImage, amount: Int = 10) -> UIImage {
         return process(image, amount: amount, filter: "poster")
     }
     
-    func makeColor(_ image:UIImage, amount:Int = 10) -> UIImage
-    {
+    func makeColor(_ image: UIImage, amount: Int = 10) -> UIImage {
         return process(image, amount: amount, filter: "colorize")
     }
     
-    func batch(_ image:UIImage, filters:[String]) -> UIImage
-    {
-        var resultImage : UIImage = image
+    func batch(_ image: UIImage, filters: [String]) -> UIImage {
+        var resultImage: UIImage = image
         
-        for filter in filters
-        {
+        for filter in filters {
             
             switch filter {
             case "doublebrightness":
@@ -72,13 +64,11 @@ class ImageProcessing
         return resultImage
     }
     
-    func process(_ image:UIImage, amount:Int, filter:String) -> UIImage
-    {
+    func process(_ image: UIImage, amount: Int, filter: String) -> UIImage {
         var rgba = RGBAImage(image: image)!
         var index = 0
         
-        for p in rgba.pixels
-        {
+        for p in rgba.pixels {
             rgba.pixels[index] = processPixel(filter, amount: amount, pixel: p)
             index += 1
         }
@@ -86,9 +76,8 @@ class ImageProcessing
         return rgba.toUIImage()!
     }
     
-    fileprivate func processPixel(_ filter:String, amount:Int, pixel:Pixel) -> Pixel
-    {
-        var affectedPixel:Pixel = pixel
+    fileprivate func processPixel(_ filter: String, amount: Int, pixel: Pixel) -> Pixel {
+        var affectedPixel: Pixel = pixel
         var red = Int(pixel.red)
         var blue = Int(pixel.blue)
         var green = Int(pixel.green)
@@ -103,21 +92,21 @@ class ImageProcessing
             blue -= amount
             green -= amount
         case "colorize":
-            red = blue + (amount/8)
-            blue = green + (amount/8)
-            green = blue + (amount/8)
+            red = blue + (amount / 8)
+            blue = green + (amount / 8)
+            green = blue + (amount / 8)
         case "warm":
             red += amount
-            blue += amount/8
-            green += amount/8
+            blue += amount / 8
+            green += amount / 8
         case "cold":
-            red += amount/8
+            red += amount / 8
             blue += amount
-            green += amount/8
+            green += amount / 8
         case "poster":
-            red += amount/32
-            blue += amount/32
-            green += amount/32
+            red += amount / 32
+            blue += amount / 32
+            green += amount / 32
             
             if(red >= 0 && red < 64) { red = 32}
             if(red >= 64 && red < 128) { red = 96}

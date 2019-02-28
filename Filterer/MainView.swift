@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-class MainView : UIView
-{
+class MainView: UIView {
     //----------------------------------------------------
     // MARK: - Outlets
     //----------------------------------------------------
@@ -24,19 +23,16 @@ class MainView : UIView
     @IBOutlet var processingLabel: UILabel!
     @IBOutlet var editButton: UIButton!
     
-    func setup()
-    {
+    func setup() {
         _ = setupRoundedLabel(originalLabel)
         _ = setupRoundedLabel(processingLabel)
     }
     
-    func setupRoundedLabel(_ label: UILabel) -> UILabel
-    {
+    func setupRoundedLabel(_ label: UILabel) -> UILabel {
         label.layer.cornerRadius = 10
         label.layer.masksToBounds = true
         label.clipsToBounds = true
         
         return label
     }
-    
 }

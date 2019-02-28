@@ -8,16 +8,16 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
-{
+class MainViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     //----------------------------------------------------
     //MARK: - Private Properties
     //----------------------------------------------------
     fileprivate let processor = ImageProcessing()
     fileprivate var originalImage = UIImage(named: "sample")!
-    fileprivate var processedImage : UIImage? = nil
-    fileprivate var isOriginalLabelHidden : Bool = false
-    fileprivate var currentFilter : String = ""
+    fileprivate var processedImage: UIImage? = nil
+    fileprivate var isOriginalLabelHidden: Bool = false
+    fileprivate var currentFilter: String = ""
     
     //----------------------------------------------------
     // MARK: - Public Properties
@@ -30,8 +30,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     //----------------------------------------------------
     // MARK: - Overrides
     //----------------------------------------------------
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         currentView.imageView.image = originalImage
         processedImage = originalImage
@@ -42,16 +41,13 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         currentView.editMenu.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         currentView.editMenu.translatesAutoresizingMaskIntoConstraints = false
         
-        
-        let tapGestureRecognizer =  UILongPressGestureRecognizer(target:self, action:#selector(MainViewController.imageTouchUpInside(_:)))
+        let tapGestureRecognizer =  UILongPressGestureRecognizer(target: self, action: #selector(MainViewController.imageTouchUpInside(_: )))
         currentView.imageView.addGestureRecognizer(tapGestureRecognizer)
         
         currentView.setup()
-        
     }
     
-    override func didReceiveMemoryWarning()
-    {
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         processedImage = nil
     }
@@ -59,20 +55,16 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     //----------------------------------------------------
     // MARK: - Actions
     //----------------------------------------------------
-    @IBAction func didTouchUpInsideImageToggle(_ sender: UIButton)
-    {
+    @IBAction func didTouchUpInsideImageToggle(_ sender: UIButton) {
         sender.isSelected = switchBetweenOriginalAndProcessed(!sender.isSelected)
     }
     
-    
-    @IBAction func onShare(_ sender: AnyObject)
-    {
+    @IBAction func onShare(_ sender: AnyObject) {
         let activityController = UIActivityViewController(activityItems: ["Check out our really cool app", currentView.imageView.image!], applicationActivities: nil)
         present(activityController, animated: true, completion: nil)
     }
     
-    @IBAction func onNewPhoto(_ sender: AnyObject)
-    {
+    @IBAction func onNewPhoto(_ sender: AnyObject) {
         let actionSheet = UIAlertController(title: "New Photo", message: nil, preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { action in
@@ -89,21 +81,18 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     @IBAction func onFilter(_ sender: UIButton) {
-        if (sender.isSelected)
-        {
+        if (sender.isSelected) {
             hideSecondaryMenu()
-        }
-        else
-        {
+        } else {
             hideEditMenu()
             currentView.editButton.isSelected = false 
             showSecondaryMenu()
         }
+        
         sender.isSelected = !sender.isSelected
     }
     
-    @IBAction func didTouchFilter(_ sender: UIButton)
-    {
+    @IBAction func didTouchFilter(_ sender: UIButton) {
         let selected = sender.currentTitle!
         
         // DEBUG:
@@ -111,23 +100,22 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         currentView.editMenu.fxSlider.value = 50
         
-        switch selected
-        {
+        switch selected {
         case "F1":
             currentFilter = "warm"
-            applyFilter(currentFilter, level:50)
+            applyFilter(currentFilter, level: 50)
         case "F2":
             currentFilter = "cold"
-            applyFilter("cold", level:50)
+            applyFilter("cold", level: 50)
         case "F3":
             currentFilter = "poster"
-            applyFilter(currentFilter, level:50)
+            applyFilter(currentFilter, level: 50)
         case "F4":
             currentFilter = "colorize"
-            applyFilter(currentFilter, level:50)
+            applyFilter(currentFilter, level: 50)
         case "F5":
             currentFilter = "brightness"
-            applyFilter(currentFilter, level:50)
+            applyFilter(currentFilter, level: 50)
         default:
             print("Why is the button \(sender.currentTitle ?? "NDA") bounded to this action?")
         }
@@ -137,10 +125,8 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         currentView.imageToggle.isEnabled = true
     }
 
-    @IBAction func didTouchEdit(_ sender: UIButton, forEvent event: UIEvent)
-    {
-        if (sender.isSelected)
-        {
+    @IBAction func didTouchEdit(_ sender: UIButton, forEvent event: UIEvent) {
+        if (sender.isSelected) {
             hideEditMenu()
         }
         else
@@ -152,16 +138,15 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         sender.isSelected = !sender.isSelected
     }
     
-    @IBAction func didChangeValueFxSlider(_ sender: UISlider)
-    {
+    @IBAction func didChangeValueFxSlider(_ sender: UISlider) {
         applyFilter(currentFilter, level: Int(sender.value))
     }
     
     //----------------------------------------------------
     // MARK: - Functions
     //----------------------------------------------------
-    func applyFilter(_ filter: String, level:Int) -> Void
-    {
+    
+    func applyFilter(_ filter: String, level: Int) -> Void {
         // Show the processing overlay
         currentView.processingLabel.isHidden = false
         
@@ -179,8 +164,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         currentView.layoutIfNeeded()
     }
     
-    func showCamera()
-    {
+    func showCamera() {
         let cameraPicker = UIImagePickerController()
         cameraPicker.delegate = self
         cameraPicker.sourceType = .camera
@@ -188,8 +172,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         present(cameraPicker, animated: true, completion: nil)
     }
     
-    func showAlbum()
-    {
+    func showAlbum() {
         let cameraPicker = UIImagePickerController()
         cameraPicker.delegate = self
         cameraPicker.sourceType = .photoLibrary
@@ -197,9 +180,12 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         present(cameraPicker, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey:Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         dismiss(animated: true, completion: nil)
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        if let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage {
             currentView.imageView.image = image
             originalImage = image
             processedImage = image
@@ -272,23 +258,18 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }) 
     }
     
-    func imageTouchUpInside(_ sender: AnyObject)
-    {
+    @objc func imageTouchUpInside(_ sender: AnyObject) {
         // NOTE: Using the "first" because there is only one. :)
         let state = currentView.imageView.gestureRecognizers?.first?.state
         
-        _ = switchBetweenOriginalAndProcessed(state == UIGestureRecognizerState.began || state == UIGestureRecognizerState.changed)
+        _ = switchBetweenOriginalAndProcessed(state == UIGestureRecognizer.State.began || state == UIGestureRecognizer.State.changed)
         
     }
     
-    func switchBetweenOriginalAndProcessed(_ condition: Bool) -> Bool
-    {
-        if(condition)
-        {
+    func switchBetweenOriginalAndProcessed(_ condition: Bool) -> Bool {
+        if(condition) {
             currentView.imageView.image = originalImage
-        }
-        else
-        {
+        } else {
             currentView.imageView.image = processedImage
         }
         
@@ -296,32 +277,15 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         return condition
     }
-
     //----------------------------------------------------
 }
 
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey:Any]) -> [String:Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
+}
