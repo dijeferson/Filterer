@@ -1,6 +1,3 @@
-/*
- */
-
 import UIKit
 
 public struct Pixel {

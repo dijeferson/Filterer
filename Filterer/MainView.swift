@@ -10,9 +10,11 @@ import Foundation
 import UIKit
 
 class MainView: UIView {
+    
     //----------------------------------------------------
     // MARK: - Outlets
     //----------------------------------------------------
+    
     @IBOutlet var filtersMenu: FilterMenuView!
     @IBOutlet var editMenu: EditMenuView!
     @IBOutlet var imageView: UIImageView!

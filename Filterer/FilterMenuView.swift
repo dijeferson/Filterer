@@ -9,6 +9,4 @@
 import Foundation
 import UIKit
 
-class FilterMenuView: UIView {
-    
-}
+class FilterMenuView: UIView { }

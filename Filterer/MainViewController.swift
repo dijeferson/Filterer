@@ -13,6 +13,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     //----------------------------------------------------
     //MARK: - Private Properties
     //----------------------------------------------------
+    
     fileprivate let processor = ImageProcessing()
     fileprivate var originalImage = UIImage(named: "sample")!
     fileprivate var processedImage: UIImage? = nil
@@ -22,6 +23,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     //----------------------------------------------------
     // MARK: - Public Properties
     //----------------------------------------------------
+    
     fileprivate var currentView: MainView
     {
         return self.view as! MainView
@@ -30,6 +32,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     //----------------------------------------------------
     // MARK: - Overrides
     //----------------------------------------------------
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         currentView.imageView.image = originalImage
@@ -55,6 +58,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     //----------------------------------------------------
     // MARK: - Actions
     //----------------------------------------------------
+    
     @IBAction func didTouchUpInsideImageToggle(_ sender: UIButton) {
         sender.isSelected = switchBetweenOriginalAndProcessed(!sender.isSelected)
     }
@@ -135,6 +139,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             currentView.filterButton.isSelected = false
             showEditMenu()
         }
+        
         sender.isSelected = !sender.isSelected
     }
     
@@ -149,7 +154,6 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func applyFilter(_ filter: String, level: Int) -> Void {
         // Show the processing overlay
         currentView.processingLabel.isHidden = false
-        
         currentView.layoutIfNeeded()
         
         //dispatch_async(dispatch_get_main_queue(), {
@@ -160,7 +164,6 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         // hide the processing overlay
         currentView.processingLabel.isHidden = true
-        
         currentView.layoutIfNeeded()
     }
     
@@ -181,8 +184,8 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey:Any]) {
-// Local variable inserted by Swift 4.2 migrator.
-let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+        // Local variable inserted by Swift 4.2 migrator.
+        let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
 
         dismiss(animated: true, completion: nil)
         if let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage {
@@ -206,7 +209,6 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         let bottomConstraint = currentView.filtersMenu.bottomAnchor.constraint(equalTo: currentView.bottomMenu.topAnchor)
         let leftConstraint = currentView.filtersMenu.leftAnchor.constraint(equalTo: view.leftAnchor)
         let rightConstraint = currentView.filtersMenu.rightAnchor.constraint(equalTo: view.rightAnchor)
-        
         let heightConstraint = currentView.filtersMenu.heightAnchor.constraint(equalToConstant: 64)
         
         NSLayoutConstraint.activate([bottomConstraint, leftConstraint, rightConstraint, heightConstraint])
@@ -214,19 +216,18 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         view.layoutIfNeeded()
         
         self.currentView.filtersMenu.alpha = 0
-        UIView.animate(withDuration: 0.4, animations: {
+        UIView.animate(withDuration: 0.4,
+                       animations: {
             self.currentView.filtersMenu.alpha = 1.0
         }) 
     }
     
     func hideSecondaryMenu() {
-        UIView.animate(withDuration: 0.4, animations: {
-            self.currentView.filtersMenu.alpha = 0
-        }, completion: { completed in
-            if completed == true {
-                self.currentView.filtersMenu.removeFromSuperview()
-            }
-        }) 
+        UIView.animate(withDuration: 0.4,
+                       animations: { self.currentView.filtersMenu.alpha = 0 },
+                       completion: { completed in
+                            if(completed) { self.currentView.filtersMenu.removeFromSuperview() }
+                       })
     }
     
     func showEditMenu() {
@@ -235,7 +236,6 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         let bottomConstraint = currentView.editMenu.bottomAnchor.constraint(equalTo: currentView.bottomMenu.topAnchor)
         let leftConstraint = currentView.editMenu.leftAnchor.constraint(equalTo: view.leftAnchor)
         let rightConstraint = currentView.editMenu.rightAnchor.constraint(equalTo: view.rightAnchor)
-        
         let heightConstraint = currentView.editMenu.heightAnchor.constraint(equalToConstant: 44)
         
         NSLayoutConstraint.activate([bottomConstraint, leftConstraint, rightConstraint, heightConstraint])
@@ -249,43 +249,22 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
     }
     
     func hideEditMenu() {
-        UIView.animate(withDuration: 0.4, animations: {
-            self.currentView.editMenu.alpha = 0
-        }, completion: { completed in
-            if completed == true {
-                self.currentView.editMenu.removeFromSuperview()
-            }
-        }) 
+        UIView.animate(withDuration: 0.4,
+                       animations: { self.currentView.editMenu.alpha = 0 },
+                       completion: { completed in if (completed) { self.currentView.editMenu.removeFromSuperview() }
+                       }) 
     }
     
     @objc func imageTouchUpInside(_ sender: AnyObject) {
         // NOTE: Using the "first" because there is only one. :)
         let state = currentView.imageView.gestureRecognizers?.first?.state
-        
         _ = switchBetweenOriginalAndProcessed(state == UIGestureRecognizer.State.began || state == UIGestureRecognizer.State.changed)
-        
     }
     
     func switchBetweenOriginalAndProcessed(_ condition: Bool) -> Bool {
-        if(condition) {
-            currentView.imageView.image = originalImage
-        } else {
-            currentView.imageView.image = processedImage
-        }
-        
+        currentView.imageView.image = condition ? originalImage : processedImage
         currentView.originalLabel.isHidden = !condition
         
         return condition
     }
-    //----------------------------------------------------
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey:Any]) -> [String:Any] {
-	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
-	return input.rawValue
 }

@@ -58,7 +58,6 @@ class ImageProcessing {
                 print("\(filter) is not a valid predefined filter.")
                 break
             }
-            
         }
         
         return resultImage

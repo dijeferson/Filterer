@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07571D8F2228600B005B2C70 /* ImagePickerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07571D8E2228600B005B2C70 /* ImagePickerHelper.swift */; };
 		07D2F3F81D174D6C00714FBE /* ImageProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D2F3F51D174D6C00714FBE /* ImageProcessing.swift */; };
 		07D2F3F91D174D6C00714FBE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D2F3F61D174D6C00714FBE /* MainView.swift */; };
 		07D2F3FA1D174D6C00714FBE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D2F3F71D174D6C00714FBE /* MainViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07571D8E2228600B005B2C70 /* ImagePickerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerHelper.swift; sourceTree = "<group>"; };
 		07D2F3F51D174D6C00714FBE /* ImageProcessing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessing.swift; sourceTree = "<group>"; };
 		07D2F3F61D174D6C00714FBE /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		07D2F3F71D174D6C00714FBE /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			children = (
 				07D2F3F51D174D6C00714FBE /* ImageProcessing.swift */,
 				4DC199A91BB2049F00AA75E7 /* RGBAImage.swift */,
+				07571D8E2228600B005B2C70 /* ImagePickerHelper.swift */,
 			);
 			name = Infrastructure;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				07D2F3F81D174D6C00714FBE /* ImageProcessing.swift in Sources */,
 				07D2F3FC1D174E1700714FBE /* FilterMenuView.swift in Sources */,
 				07D2F4001D176AD200714FBE /* EditMenuView.swift in Sources */,
+				07571D8F2228600B005B2C70 /* ImagePickerHelper.swift in Sources */,
 				4DC199AA1BB2049F00AA75E7 /* RGBAImage.swift in Sources */,
 				07D2F3FA1D174D6C00714FBE /* MainViewController.swift in Sources */,
 				07D2F3F91D174D6C00714FBE /* MainView.swift in Sources */,
